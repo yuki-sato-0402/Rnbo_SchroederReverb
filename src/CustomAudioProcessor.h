@@ -16,7 +16,8 @@ public:
         jassert(parameters != nullptr);  // parameters が nullptr でないかチェック
         return *parameters; 
     }
-
+    
+    void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     void parameterChanged(const juce::String& parameterID, float newValue) override;
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;

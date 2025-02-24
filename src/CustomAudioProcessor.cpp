@@ -93,10 +93,30 @@ CustomAudioProcessor::CustomAudioProcessor(
   
 }
 
+//processBlock() がないと JUCE のオーディオ処理が実行されない 
+//JUCE のオーディオデータを RNBO に渡す, RNBO で処理された結果を JUCE に戻す,リアルタイムでパラメータを反映させる
+void CustomAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+{
+  juce::ignoreUnused (midiMessages);
+  auto bufferSize = buffer.getNumSamples();
+
+  rnboObject.prepareToProcess (getSampleRate(),static_cast<size_t> (bufferSize));
+
+  rnboObject.process (buffer.getArrayOfWritePointers(),
+                      static_cast<RNBO::Index> (buffer.getNumChannels()),
+                      buffer.getArrayOfWritePointers(),
+                      static_cast<RNBO::Index> (buffer.getNumChannels()),
+                      static_cast<RNBO::Index> (bufferSize));
+}
+
+
+
 //このコールバック メソッドは、パラメータが変更されたときに AudioProcessorValueTreeStateによって呼び出されます。
 void CustomAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
 {
+    
     if (parameterID == "mix"){
+      DBG("parameterChanged: " << parameterID << " = " << newValue);
       RNBO::ParameterIndex index = rnboObject.getParameterIndexForID("mix");
       rnboObject.setParameterValue(index, newValue);
     }else if(parameterID == "delayAll"){
