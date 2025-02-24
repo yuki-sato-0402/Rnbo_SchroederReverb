@@ -31,11 +31,8 @@ CustomAudioProcessor::CustomAudioProcessor(
     const RNBO::BinaryData& data
     ) 
   : RNBO::JuceAudioProcessor(patcher_desc, presets, data) 
-  //,valueTreeState(*this, nullptr, "PARAMETERS", juce::AudioProcessorValueTreeState::ParameterLayout()) // ← 追加
 {
   
-
-
   parameters = std::make_unique<juce::AudioProcessorValueTreeState>(
     *this, nullptr, juce::Identifier("APVTSTutorial"),
     juce::AudioProcessorValueTreeState::ParameterLayout {
@@ -45,8 +42,6 @@ CustomAudioProcessor::CustomAudioProcessor(
         juce::NormalisableRange<float>(0.f, 1000.f, 0.01f),5.f),
         std::make_unique<juce::AudioParameterFloat>(ParameterID { "delayCom",  1}, "delayCom",
         juce::NormalisableRange<float>(0.f, 1000.f, 0.01f),39.85f)
-
-        //std::make_unique<juce::AudioParameterBool>("invertPhase", "Invert Phase", false)
     }
   );
   if (!parameters){
@@ -128,7 +123,6 @@ CustomAudioProcessor::~CustomAudioProcessor()
 
 void CustomAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    //[1]以下の内容を追加します。
     auto state = parameters->copyState();
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     copyXmlToBinary(*xml, destData);
@@ -136,7 +130,6 @@ void CustomAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 
 void CustomAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    //[2]以下の内容を追加します。
     std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
 
     if (xmlState.get() != nullptr)
@@ -151,7 +144,7 @@ AudioProcessorEditor* CustomAudioProcessor::createEditor()
     //AudioProcessorEditor側でAudioProcessorValueTreeStateにアクセスするための方法が必要です。
     //一般的なアプローチは、AudioProcessorからAudioProcessorValueTreeStateへの参照またはポインタを取得できるようにすること
     return new CustomAudioEditor (this, this->_rnboObject, *parameters);
-//RNBOのデフォルトエディター, 標準的なパラメータ表示, 追加のカスタマイズが限定的
+    //RNBOのデフォルトエディター, 標準的なパラメータ表示, 追加のカスタマイズが限定的
     //return RNBO::JuceAudioProcessor::createEditor();
 }
 

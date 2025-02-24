@@ -10,7 +10,6 @@ public:
     CustomAudioProcessor(const nlohmann::json& patcher_desc, const nlohmann::json& presets, const RNBO::BinaryData& data);
     ~CustomAudioProcessor()override;
     juce::AudioProcessorEditor* createEditor() override;
-    //juce::AudioProcessorValueTreeState valueTreeState;// ✅ ここに実体を定義
     // APVTS の参照を取得する関数を追加
     juce::AudioProcessorValueTreeState& getValueTreeState() 
     { 
