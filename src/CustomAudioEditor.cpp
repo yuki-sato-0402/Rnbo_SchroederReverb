@@ -3,7 +3,7 @@
 CustomAudioEditor::CustomAudioEditor (RNBO::JuceAudioProcessor* const p, RNBO::CoreObject& rnboObject, juce::AudioProcessorValueTreeState& vts)
     : AudioProcessorEditor (p)
     , _audioProcessor(p)
-    , _rnboObject(rnboObject)      // 参照メンバーを初期化（必須）
+    , _rnboObject(rnboObject) // 参照メンバーを初期化（必須）
     , valueTreeState(vts)
 {
     //Mix
