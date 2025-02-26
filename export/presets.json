@@ -1,0 +1,30 @@
+[
+  {
+    "name": "untitled",
+    "preset": {
+      "delayAll": {
+        "value": 128
+      },
+      "delayCom": {
+        "value": 155
+      },
+      "mix": {
+        "value": 2
+      }
+    }
+  },
+  {
+    "name": "untitled",
+    "preset": {
+      "clip1": {
+        "value": 1
+      },
+      "clip2": {
+        "value": 1
+      },
+      "sync": {
+        "value": 1
+      }
+    }
+  }
+]
