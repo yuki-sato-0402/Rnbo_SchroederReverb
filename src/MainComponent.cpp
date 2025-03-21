@@ -138,7 +138,7 @@ public:
 
 		jassert(_audioProcessor.get() == nullptr);
 
-		_audioProcessor = std::unique_ptr<CustomAudioProcessor>(CustomAudioProcessor::CreateDefault());
+		_audioProcessor = std::unique_ptr<CustomAudioProcessor>(new CustomAudioProcessor());
 		RNBO::CoreObject& rnboObject = _audioProcessor->getRnboObject();
 		rnboObject.setPatcherChangedHandler(this);
 

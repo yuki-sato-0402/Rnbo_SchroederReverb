@@ -47,8 +47,8 @@ juce_generate_juce_header(RNBOAudioPlugin)
 # that will be built into the target. This is a standard CMake command.
 
 target_sources(RNBOAudioPlugin PRIVATE
-  "${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessor.cpp"
-  "${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessorEditor.cpp"
+  #"${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessor.cpp"
+  #"${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessorEditor.cpp"
   "${RNBO_CPP_DIR}/RNBO.cpp"
   ${RNBO_CLASS_FILE}
   src/Plugin.cpp

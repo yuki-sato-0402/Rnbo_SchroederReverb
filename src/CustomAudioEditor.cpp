@@ -1,10 +1,8 @@
+#include "CustomAudioProcessor.h"
 #include "CustomAudioEditor.h"
 
-CustomAudioEditor::CustomAudioEditor (RNBO::JuceAudioProcessor* const p, RNBO::CoreObject& rnboObject, juce::AudioProcessorValueTreeState& vts)
-    : AudioProcessorEditor (p)
-    , _audioProcessor(p)
-    , _rnboObject(rnboObject) // 参照メンバーを初期化（必須）
-    , valueTreeState(vts)
+CustomAudioEditor::CustomAudioEditor (CustomAudioProcessor& p, juce::AudioProcessorValueTreeState& vts)
+    : AudioProcessorEditor (&p), valueTreeState(vts)// 参照メンバーを初期化（必須）
 {
     //Mix
     addAndMakeVisible(dial1Slider);
@@ -46,14 +44,7 @@ CustomAudioEditor::CustomAudioEditor (RNBO::JuceAudioProcessor* const p, RNBO::C
     label3.setText ("Del Comb Filter", juce::dontSendNotification);
     label3.setJustificationType(juce::Justification::centred);
     
-    _audioProcessor->addListener(this);
     setSize(400, 180);
-}
-
-CustomAudioEditor::~CustomAudioEditor()
-{
-    _audioProcessor->removeListener(this);
-    
 }
 
 void CustomAudioEditor::paint (Graphics& g)
@@ -77,10 +68,4 @@ void CustomAudioEditor::resized()
     label2.setBounds(dial2Slider.getX(), dial2Slider.getY(), dial2Slider.getWidth(),dial2Slider.getTextBoxHeight() );
     label3.setBounds(dial3Slider.getX(), dial3Slider.getY(), dial3Slider.getWidth(),dial3Slider.getTextBoxHeight() );
 
-}
-
-
-void CustomAudioEditor::audioProcessorParameterChanged (AudioProcessor*, int parameterIndex, float value)
-{
-   
 }

@@ -40,8 +40,8 @@ target_sources(RNBOApp
 
   ${RNBO_CPP_DIR}/RNBO.cpp
   ${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessorUtils.cpp
-  ${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessorEditor.cpp
-  ${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessor.cpp
+  #${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessorEditor.cpp
+  #${RNBO_CPP_DIR}/adapters/juce/RNBO_JuceAudioProcessor.cpp
   )
 
 if (EXISTS ${RNBO_BINARY_DATA_FILE})
