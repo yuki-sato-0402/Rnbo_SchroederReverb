@@ -46,8 +46,8 @@ parameters(*this, nullptr, juce::Identifier("PARAMETERS"),
       apvtsParamIdToRnboParamIndex[paramID] = i;
     
 
-    parameters.addParameterListener(paramID, this);
-    rnboObject.setParameterValue(i, parameters.getRawParameterValue(paramID)->load());  // RNBO に適用
+      parameters.addParameterListener(paramID, this);
+      rnboObject.setParameterValue(i, parameters.getRawParameterValue(paramID)->load());  // RNBO に適用
       
     } 
   }

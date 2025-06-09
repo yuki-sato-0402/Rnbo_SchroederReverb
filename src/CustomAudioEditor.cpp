@@ -15,6 +15,11 @@ CustomAudioEditor::CustomAudioEditor (CustomAudioProcessor& p, juce::AudioProces
     dial1Slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
     dial1Slider.setTextValueSuffix (" %");     
     dial1Slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, dial1Slider.getTextBoxWidth(), dial1Slider.getTextBoxHeight());
+    dial1Slider.setColour(juce::Slider::rotarySliderOutlineColourId, juce::Colours::white);
+    dial1Slider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::deepskyblue.withAlpha(0.75f));
+    dial1Slider.setColour(juce::Slider::thumbColourId , juce::Colours::deepskyblue.brighter(1.5));
+    dial1Slider.setColour(juce::Slider::textBoxTextColourId, juce::Colours::white);
+    dial1Slider.setColour(juce::Slider::textBoxOutlineColourId , juce::Colours::white);
 
     addAndMakeVisible(label1);
     label1.setText ("Mix", juce::dontSendNotification);
@@ -27,6 +32,11 @@ CustomAudioEditor::CustomAudioEditor (CustomAudioProcessor& p, juce::AudioProces
     dial2Slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
     dial2Slider.setTextValueSuffix (" ms");     
     dial2Slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, dial2Slider.getTextBoxWidth(), dial2Slider.getTextBoxHeight());
+    dial2Slider.setColour(juce::Slider::rotarySliderOutlineColourId, juce::Colours::white);
+    dial2Slider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::deepskyblue.withAlpha(0.75f));
+    dial2Slider.setColour(juce::Slider::thumbColourId , juce::Colours::deepskyblue.brighter(1.5));
+    dial2Slider.setColour(juce::Slider::textBoxTextColourId, juce::Colours::white);
+    dial2Slider.setColour(juce::Slider::textBoxOutlineColourId , juce::Colours::white);
 
     addAndMakeVisible(label2);
     label2.setText ("Del All-Pass Filter ", juce::dontSendNotification);
@@ -39,6 +49,11 @@ CustomAudioEditor::CustomAudioEditor (CustomAudioProcessor& p, juce::AudioProces
     dial3Slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
     dial3Slider.setTextValueSuffix (" ms");     
     dial3Slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, dial3Slider.getTextBoxWidth(), dial3Slider.getTextBoxHeight());
+    dial3Slider.setColour(juce::Slider::rotarySliderOutlineColourId, juce::Colours::white);
+    dial3Slider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::deepskyblue.withAlpha(0.75f));
+    dial3Slider.setColour(juce::Slider::thumbColourId , juce::Colours::deepskyblue.brighter(1.5));
+    dial3Slider.setColour(juce::Slider::textBoxTextColourId, juce::Colours::white);
+    dial3Slider.setColour(juce::Slider::textBoxOutlineColourId , juce::Colours::white);
 
     addAndMakeVisible(label3);
     label3.setText ("Del Comb Filter", juce::dontSendNotification);
@@ -49,7 +64,7 @@ CustomAudioEditor::CustomAudioEditor (CustomAudioProcessor& p, juce::AudioProces
 
 void CustomAudioEditor::paint (Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll(juce::Colours::deepskyblue); // 背景色を設定
 }
 
 void CustomAudioEditor::resized()
